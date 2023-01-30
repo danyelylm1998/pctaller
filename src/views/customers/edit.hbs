@@ -1,0 +1,88 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Información de Usuario</h3>
+                    </div>
+                    <div class="card-body">
+                        {{#with updateCustomer}}
+                        <form id="quickForm" action="/customers/edit/{{id}}" method="POST">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Identificación</label>
+                                                <input type="text" name="identification" class="form-control"
+                                                    placeholder="Ingrese la Identificación" value="{{identification}}"
+                                                    autofocus>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Nombres</label>
+                                                <input type="text" name="names" class="form-control"
+                                                    placeholder="Ingrese los nombres" value="{{names}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Apellidos</label>
+                                                <input type="text" name="lastnamesCustomer" class="form-control"
+                                                    placeholder="Ingrese los apellidos" value="{{lastnames}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Dirección</label>
+                                                <input type="text" name="address" class="form-control"
+                                                    placeholder="Ciudad, barrio o parroquia, calle, avenida"
+                                                    value="{{address}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Correo electrónico</label>
+                                                <input type="email" name="emailCustomer" class="form-control"
+                                                    placeholder="Ingrese el correo electrónico" value="{{email}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="contact">Contacto</label>
+                                                <input type="text" name="contact" class="form-control"
+                                                    placeholder="Ingrese el contacto" value="{{contact}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/with}}
+                                </div>
+                            </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary">
+                            <i class="nav-icon fas fa-sync"></i>
+                            Guardar Cambios
+                        </button>
+                    </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{{#with updateUser}}
+<script src="/js/conf/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sStatus > option[value="' + {{ active }} + '"]').attr('selected', 'selected');
+    $('#sCategoryUser > option[value="' + {{ category }}+'"]').attr('selected', 'selected');
+    });
+</script>
+{{/with}}

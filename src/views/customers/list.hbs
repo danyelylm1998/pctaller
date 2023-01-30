@@ -1,0 +1,47 @@
+<section class="content">
+  <div class="card">
+    <div class="card-body">
+      <table id="example1" class="table table-bordered table-striped projects">
+        <thead>
+          <tr>
+            <th>Apellidos</th>
+            <th>Nombres</th>
+            <th>Información General</th>
+            <th>.</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each customers}}
+          <tr>
+            <td>{{lastnames}}</td>
+            <td>{{names}}</td>
+            <td>
+              <small><i class="text-muted fas fa-columns"></i></small> {{identification}}
+              <br />
+              <small><i class="text-muted fas fa-phone"></i></small> {{contact}}
+              <br />
+              <small><i class="text-muted fas fa-envelope"></i></small> {{email}}
+              <br />
+              <small><i class="text-muted fas fa-map"></i></small> {{address}}
+            </td>
+            <td class="project-actions text-center">
+              <a class="btn btn-primary btn-sm" href="/customers/view/{{id}}">
+                <i class="fas fa-eye"></i>
+              </a>
+              <a class="btn btn-info btn-sm" href="/customers/edit/{{id}}">
+                <i class="fas fa-pencil-alt"></i>
+              </a>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+        <tfoot>
+          <th>Apellidos</th>
+          <th>Nombres</th>
+          <th>Información General</th>
+          <th>.</th>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</section>

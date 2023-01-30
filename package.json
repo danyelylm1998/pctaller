@@ -1,0 +1,39 @@
+{
+  "name": "pc-taller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.2",
+    "connect-flash": "^0.1.1",
+    "express": "^4.17.3",
+    "express-handlebars": "^3.0.0",
+    "express-mysql-session": "^2.1.7",
+    "express-session": "^1.17.2",
+    "express-toastr": "^2.0.2",
+    "express-validator": "^5.3.0",
+    "fs-extra": "^7.0.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.1",
+    "mysql": "^2.18.1",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0",
+    "pdfkit": "^0.13.0",
+    "pdfkit-construct": "^1.2.3",
+    "qrcode": "^1.4.4",
+    "sharp": "^0.30.3",
+    "socket.io": "^2.0.4",
+    "timeago.js": "^4.0.2",
+    "uuid": "^3.3.2"
+  }
+}

@@ -1,0 +1,114 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Mis reparaciones, {{repairsUserTotal.totalRepairs}} en total</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg col-6">
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{repairsUser.pendiente}}</h3>
+                <h4>Pendiente</h4>
+                <h6>Estas son las reparaciones que aún no son intervenidas.</h6>
+              </div>
+              <div class="icon">
+                <i class="icon fas fa-clipboard-list"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg col-6">
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{repairsUser.proceso}}</h3>
+                <h4>En reparación</h4>
+                <h6>Son las reparaciones que aún están siendo realizadas.</h6>
+              </div>
+              <div class="icon">
+                <i class="icon fas fa-wrench"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg col-6">
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{repairsUser.terminada}}
+                </h3>
+                <h4>Culminada</h4>
+                <h6>Son reparaciones terminadas, pero aún no puedes entregar.</h6>
+              </div>
+              <div class="icon">
+                <i class="icon fas fa-check"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg col-6">
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{repairsUser.taller}}</h3>
+                <h4>En taller</h4>
+                <h6>Estas son las reparaciones que ya pueden ser entregadas.</h6>
+              </div>
+              <div class="icon">
+                <i class="icon fas fa-building"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg col-6">
+            <div class="small-box bg-secondary">
+              <div class="inner">
+                <h3>{{repairsUser.entregada}}</h3>
+                <h4>Entregada a cliente</h4>
+                <h6>Estas son las reparaciones que ya fueron entregadas.</h6>
+              </div>
+              <div class="icon">
+                <i class="icon fas fa-user"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Mi balance general</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          {{#with balancesUsers}}
+          <div class="col-lg col-6">
+            <strong>
+              Costo Total:
+            </strong>$ {{cost}}
+          </div>
+          <div class="col-lg col-6">
+            <strong>
+              Pago Total:
+            </strong>$ {{paid}}
+          </div>
+          <div class="col-lg col-6">
+            <strong>
+              Pendiente Total:
+            </strong>$ {{pending}}
+          </div>
+          {{/with}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<nav class="main-header navbar navbar-expand navbar-dark">
+  <ul class="navbar-nav">
+    {{#if user}}
+    <li class="nav-item">
+      <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i>
+      </a>
+    </li>
+    {{/if}}
+    <li class="nav-item d-none d-sm-inline-block">
+      {{#if user}}
+      {{#with user}}
+      <a href="/profile" class="navbar-brand user-panel d-flex">
+        <img src="/uploads/profile/users/{{image}}" class="img-circle elevation-2" alt="">
+        &nbsp;
+        {{names}} {{lastnames}}
+      </a>
+      {{/with}}
+      {{else}}
+      <a href="/" class="navbar-brand">
+        PC Taller | Aplicación web para la gestión de reparaciones informáticas
+      </a>
+      {{/if}}
+    </li>
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item dropdown user-menu">
+      <a class="nav-link dropdown-toggle theme-switch" href="#">
+        <div class="form-group">
+          <div class="custom-control custom-switch custom-switch-on-information">
+            <input type="checkbox" class="custom-control-input" id="checkbox" />
+            <label class="custom-control-label" for="checkbox">Oscuro</label>
+          </div>
+        </div>
+      </a>
+    </li>
+    {{#if user}}
+    <li class="nav-item dropdown user-menu">
+      <a class="nav-link dropdown-toggle" href="/profile">
+        <i class="fas fa-home nav-icon"></i>
+        <label class="d-none d-md-inline">Inicio</label>
+      </a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fas fa-user"></i>
+        <label class="d-none d-md-inline">Mi Perfil</label>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a href="/users/edit/{{user.id}}" class="dropdown-item">
+          <i class="fas fa-user-cog mr-2"></i> Modificar
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="/users/reset/{{user.id}}" class="dropdown-item">
+          <i class="fas fa-lock mr-2"></i> Cambiar Contraseña
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="/logout" class="dropdown-item">
+          <i class="fas fa-power-off mr-2"></i> Cerrar sesión
+        </a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+        <i class="fas fa-expand-arrows-alt"></i>
+      </a>
+    </li>
+    {{else}}
+    <li class="nav-item dropdown user-menu">
+      <a class="nav-link dropdown-toggle" href="/">
+        <i class="fas fa-home nav-icon"></i>
+        <label class="d-none d-md-inline">Inicio</label>
+      </a>
+    </li>
+    <li class="nav-item dropdown user-menu">
+      <a class="nav-link dropdown-toggle" href="/signin">
+        <i class="fas fa-share nav-icon"></i>
+        <label class="d-none d-md-inline">Iniciar sesión</label>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+        <i class="fas fa-expand-arrows-alt"></i>
+      </a>
+    </li>
+    {{/if}}
+  </ul>
+</nav>

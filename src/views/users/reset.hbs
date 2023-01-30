@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="mx-auto">
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a href="#" class="h1"><b>PC </b>Taller</a>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Rellene los campos requeridos</p>
+                <form id="quickForm" action="/users/reset/{{id}}" method="POST">
+                    <div class="input-group form-group mb-3">
+                        <input type="password" name="password" placeholder="Contraseña actual" class="form-control"
+                            autofocus>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group form-group mb-3">
+                        <input type="password" name="newPassword" placeholder="Nueva contraseña" class="form-control">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group form-group mb-3">
+                        <input type="password" name="confirmPassword" placeholder="Confirmar nueva contraseña"
+                            class="form-control">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block"><i class="nav-icon fas fa-sync"></i>
+                                Actualizar contraseña</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="alert alert-primary">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <i class="icon fas fa-info"></i>
+            Al cambiar la contraseña se cerrará sesión y tendrá que volver a iniciarla.
+        </div>
+    </div>
+</div>

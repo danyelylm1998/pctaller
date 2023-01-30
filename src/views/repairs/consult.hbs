@@ -1,0 +1,113 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+                <div class="card card-outline card-primary">
+                    <div class="card-header text-center">
+                        <a href="#" class="h1"><b>PC </b>Taller</a>
+                    </div>
+                    <div class="card-body">
+                        {{#if receive}}
+                        <div class="text-center">
+                            <img class="profile-user-img img-fluid img-circle"
+                                src="/uploads/profile/users/{{repairconsult.imageTechnical}}">
+                        </div>
+                        <h3 class="profile-username text-center">{{repairconsult.namesTechnical}}
+                            {{repairconsult.lastnamesTechnical}}</h3>
+                        <p class="text-muted text-center">Técnico encargado</p>
+                        <hr>
+                        {{/if}}
+                        <div class="text-muted">
+                            {{#if receive}}
+                            <strong><i class="fas fa-user mr-1"></i> Cliente:</strong>
+                            {{repairconsult.namesCustomer}} {{repairconsult.lastnamesCustomer}}
+                            <hr>
+                            {{/if}}
+                            <strong><i class="fas fa-laptop mr-1"></i> Equipo:</strong>
+                            {{repairconsult.brandEquipment}} {{repairconsult.modelEquipment}},
+                            {{#if receive}}
+                            {{#ifCond repairconsult.serieEquipment '!=' '' }}
+                            Serie {{repairconsult.serieEquipment}},
+                            {{/ifCond}}
+                            {{/if}}
+                            Color {{repairconsult.colorPrimaryEquipment}}
+                            {{#if receive}}
+                            {{#ifCond repairconsult.colorSecondaryEquipment '!=' '' }}
+                            y {{repairconsult.colorSecondaryEquipment}}
+                            {{/ifCond}}
+                            {{/if}}
+                            {{#with repairconsult}}
+                            <hr>
+                            <strong><i class="fas fa-book mr-1"></i> Motivo de ingreso:</strong>
+                            {{reason}}
+                            <hr>
+                            <strong><i class="fas fa-clock mr-1"></i> Fecha de ingreso:</strong>
+                            {{joined}}
+                            <hr>
+                            {{#if receive}}
+                            <strong><i class="fas fa-pencil-alt mr-1"></i> Observación:</strong>
+                            {{observation}}
+                            <hr>
+                            {{/if}}
+                            <strong><i class="fas fa-circle mr-1"></i> Estado:</strong>
+                            {{#ifCond status '==' 1 }}
+                            PENDIENTE
+                            <br>
+                            <p class="text-muted">El equipo ha sido recibido, sin embargo aún no ha sido
+                                atendido.
+                            </p>
+                            {{/ifCond}}
+                            {{#ifCond status '==' 2 }}
+                            EN REPARACIÓN
+                            <br>
+                            <p class="text-muted">La reparación está siendo atendida por un técnico.
+                            </p>
+                            {{/ifCond}}
+                            {{#ifCond status '==' 3 }}
+                            CULMINADA
+                            <br>
+                            <p class="text-muted">La reparación se ha culminado, sin embargo aún no puede recibir el
+                                equipo porque faltan detalles por completar.
+                            </p>
+                            {{/ifCond}}
+                            {{#ifCond status '==' 4 }}
+                            EN TALLER
+                            <br>
+                            <p class="text-muted">El equipo está listo para ser entregado.
+                            </p>
+                            {{/ifCond}}
+                            {{#ifCond status '==' 5 }}
+                            ENTREGADA A CLIENTE
+                            <br>
+                            <p class="text-muted">El equipo se encuentra con el cliente.
+                            </p>
+                            <hr>
+                            <strong><i class="fas fa-clock mr-1"></i> Fecha de entrega:</strong>
+                            {{delivered}}
+                            {{/ifCond}}
+                            {{/with}}
+                        </div>
+                        {{#if receive}}
+                        {{#with repairconsult}}
+                        <div class="row">
+                            <div class="col-6">
+                                <form id="quickForm" action="/repairs/consult/{{code}}/accept" method="POST">
+                                    <button class="btn btn-success btn-block"><b><i class="nav-icon fas fa-check"></i>
+                                            RECIBIR</b></button>
+                                </form>
+                            </div>
+                            <div class="col-6">
+                                <form id="quickForm" action="/repairs/consult/{{code}}/reject" method="POST">
+                                    <button class="btn btn-danger btn-block"><b><i class="nav-icon fas fa-times"></i>
+                                            RECHAZAR</b></button>
+                                </form>
+                            </div>
+                        </div>
+                        {{/with}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

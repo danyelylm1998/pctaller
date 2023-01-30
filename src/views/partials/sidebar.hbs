@@ -1,0 +1,110 @@
+<aside class="main-sidebar main-sidebar-custom sidebar-dark-primary elevation-4">
+  <a href="/profile" class="brand-link">
+    <img src="/img/logoSidebar.png" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">PC Taller</span>
+  </a>
+  <div class="sidebar">
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        {{#if user}}
+        <li class="nav-item">
+          <a href="/profile" class="nav-link active">
+            <i class="fas fa-home nav-icon"></i>
+            <p>Inicio</p>
+          </a>
+        </li>
+        {{else}}
+        <li class="nav-item">
+          <a href="/" class="nav-link active">
+            <i class="fas fa-home nav-icon"></i>
+            <p>Inicio</p>
+          </a>
+        </li>
+        {{/if}}
+        {{#if user.category}}
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>
+              Usuarios
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/users/add" class="nav-link">
+                <i class="fa fa-plus nav-icon"></i>
+                <p>Añadir</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/users" class="nav-link">
+                <i class="far fa-file-alt nav-icon"></i>
+                <p>Mostrar</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        {{/if}}
+        {{#if user}}
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>
+              Clientes
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/customers/add" class="nav-link">
+                <i class="fa fa-plus nav-icon"></i>
+                <p>Añadir</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/customers" class="nav-link">
+                <i class="far fa-file-alt nav-icon"></i>
+                <p>Mostrar</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        {{/if}}
+        {{#if user}}
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-wrench"></i>
+            <p>
+              Reparaciones
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/repairs/add" class="nav-link">
+                <i class="fa fa-plus nav-icon"></i>
+                <p>Añadir</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/repairs" class="nav-link">
+                <i class="far fa-file-alt nav-icon"></i>
+                <p>Mostrar</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        {{/if}}
+        <li class="nav-item">
+          <a href="/enterprises/view" class="nav-link">
+            <i class="nav-icon fas fa-building"></i>
+            <p>
+              Empresa
+            </p>
+          </a>
+        </li>
+    </nav>
+  </div>
+
+</aside>

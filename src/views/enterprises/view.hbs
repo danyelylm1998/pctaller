@@ -1,0 +1,186 @@
+<link rel="stylesheet" href="/css/imgPreview.css">
+{{#if user.category}}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Reparaciones en la empresa, {{repairsEnterpriseTotal.totalRepairs}} en total
+                </h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg col-6">
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>{{repairsEnterprises.pendiente}}</h3>
+                                <h4>Pendiente</h4>
+                                <h6>Estas son las reparaciones a realizar por parte de los técnicos.</h6>
+                            </div>
+                            <div class="icon">
+                                <i class="icon fas fa-clipboard-list"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg col-6">
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>{{repairsEnterprises.proceso}}</h3>
+                                <h4>En reparación</h4>
+                                <h6>Estas son las reparaciones sin culminar por parte de los técnicos.</h6>
+                            </div>
+                            <div class="icon">
+                                <i class="icon fas fa-wrench"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg col-6">
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>{{repairsEnterprises.terminada}}
+                                </h3>
+                                <h4>Culminada</h4>
+                                <h6>Estas son las reparaciones terminadas pero no pueden ser entregadas.</h6>
+                            </div>
+                            <div class="icon">
+                                <i class="icon fas fa-check"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg col-6">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{repairsEnterprises.taller}}</h3>
+                                <h4>En taller</h4>
+                                <h6>Estas son las reparaciones que ya pueden ser entregadas.</h6>
+                            </div>
+                            <div class="icon">
+                                <i class="icon fas fa-building"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg col-6">
+                        <div class="small-box bg-secondary">
+                            <div class="inner">
+                                <h3>{{repairsEnterprises.entregada}}</h3>
+                                <h4>Entregada a cliente</h4>
+                                <h6>Estas son las reparaciones que ya fueron entregadas.</h6>
+                            </div>
+                            <div class="icon">
+                                <i class="icon fas fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
+{{#if user.category}}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Balance general de la empresa</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {{#with balancesEnterprise}}
+                    <div class="col-lg col-6">
+                        <strong>
+                            Costo Total:
+                        </strong>$ {{cost}}
+                    </div>
+                    <div class="col-lg col-6">
+                        <strong>
+                            Pago Total:
+                        </strong>$ {{paid}}
+                    </div>
+                    <div class="col-lg col-6">
+                        <strong>
+                            Pendiente Total:
+                        </strong>$ {{pending}}
+                    </div>
+                    {{/with}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Datos de la empresa</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                {{#with enterprise}}
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>Logo</label>
+                        <div class="img-fluid text-center">
+                            <img id="imgPreview" src="/uploads/profile/enterprises/{{logo}}" class="img-fluid" alt="">
+                            <script src="/js/conf/imgPreview.js"></script>
+                        </div>
+                    </div>
+                    <div class="col-lg col-6">
+                        <strong><i class="fas fa-columns mr-1"></i> Identificación</strong>
+                        <p class="text-muted">
+                            {{identification}}
+                        </p>
+                        <hr>
+                        <strong><i class="fas fa-map mr-1"></i> Dirección</strong>
+                        <p class="text-muted">
+                            {{address}}
+                        </p>
+                        <hr>
+                        <strong><i class="fas fa-phone mr-1"></i> Contacto</strong>
+                        <p class="text-muted">
+                            {{contact}}
+                        </p>
+                    </div>
+                    <div class="col-lg col-6">
+                        <strong><i class="fas fa-building mr-1"></i> Nombre</strong>
+                        <p class="text-muted">
+                            {{name}}
+                        </p>
+                        <hr>
+                        <strong><i class="fas fa-envelope mr-1"></i> Correo electrónico</strong>
+                        <p class="text-muted">
+                            {{email}}
+                        </p>
+                    </div>
+                </div>
+                {{/with}}
+            </div>
+            {{#if user.category}}
+            <div class="card-footer">
+                <a class="btn btn-primary" href="/enterprises/edit/{{enterprise.id}}">
+                    <i class="fas fa-pencil-alt"></i>
+                    Modificar información
+                </a>
+                <a class="btn btn-primary" href="/repairs/updateqr">
+                    <i class="fas fa-sync"></i>
+                    Actualizar QRs
+                </a>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

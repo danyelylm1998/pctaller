@@ -1,0 +1,238 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="sticky-top mb-3">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Información del cliente</h3>
+                        </div>
+                        {{#with customerView}}
+                        <div class="card-body box-profile">
+                            <h3 class="profile-username text-center">{{names}} {{lastnames}}</h3>
+                            <p class="text-muted text-center">{{categoryText}}</p>
+                            <div class="text-muted">
+                                <hr>
+                                <strong><i class="fas fa-columns mr-1"></i> Identificación: </strong>{{identification}}
+                                <hr>
+                                <strong><i class="fas fa-map mr-1"></i> Dirección: </strong>{{address}}
+                                <hr>
+                                <strong><i class="fas fa-phone mr-1"></i> Contacto: </strong>{{contact}}
+                                <hr>
+                                <strong><i class="fas fa-envelope mr-1"></i> Correo electrónico: </strong>{{email}}
+                            </div>
+                        </div>
+                        {{/with}}
+                    </div>
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Acciones</h3>
+                        </div>
+                        <div class="text-muted card-body">
+                            <a class="text-muted" href="/customers/edit/{{customerView.id}}">
+                                <i class="fas fa-pencil-alt mr-1"></i>
+                                <strong>Modificar cliente</strong>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Balance de reparaciones,
+                                {{repairsCustomerViewTotal.totalRepairs}} en total</h3>
+                        </div>
+                        {{#with repairsCustomerViewCount}}
+                        <div class="card-body box-profile">
+                            <div class="text-muted">
+                                <strong><i class="fas fa-clipboard-list mr-1"></i> Pendiente: </strong>{{pendiente}}
+                                <hr>
+                                <strong><i class="fas fa-wrench mr-1"></i> En reparación: </strong>{{proceso}}
+                                <hr>
+                                <strong><i class="fas fa-check mr-1"></i> Culminada: </strong>{{terminada}}
+                                <hr>
+                                <strong><i class="fas fa-building mr-1"></i> En taller: </strong>{{taller}}
+                                <hr>
+                                <strong><i class="fas fa-user mr-1"></i> Entregada a cliente: </strong>{{entregada}}
+                            </div>
+                        </div>
+                        {{/with}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Balance general</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                {{#with balancesCustomer}}
+                                <div class="col-lg col-6">
+                                    <strong>
+                                        Costo Total:
+                                    </strong>$ {{cost}}
+                                </div>
+                                <div class="col-lg col-6">
+                                    <strong>
+                                        Pago Total:
+                                    </strong>$ {{paid}}
+                                </div>
+                                <div class="col-lg col-6">
+                                    <strong>
+                                        Pendiente Total:
+                                    </strong>$ {{pending}}
+                                </div>
+                                {{/with}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Reparaciones</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="general">
+                                    <table id="example1" class="table table-bordered table-striped projects">
+                                        <thead>
+                                            <tr>
+                                                <th>Perfil Técnico</th>
+                                                <th>Nombres Técnico</th>
+                                                <th>Apellidos Técnico</th>
+                                                <th>Información del Técnico</th>
+                                                <th>Información de Reparación</th>
+                                                <th>.</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#each repairsCustomerViewDB}}
+                                            <tr>
+                                                <td width="150" height="150">
+                                                    <ul class="list-inline text-center">
+                                                        <li class="list-inline-item">
+                                                            <img src="/uploads/profile/users/{{imageTechnical}}" alt=""
+                                                                class="img-circle img-fluid">
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                                <td>{{namesTechnical}}</td>
+                                                <td>{{lastnamesTechnical}}</td>
+                                                <td>
+                                                    <small><i class="text-muted fas fa-columns"></i></small>
+                                                    {{identificationTechnical}}
+                                                    <br />
+                                                    <small><i class="text-muted fas fa-phone"></i></small>
+                                                    {{contactTechnical}}
+                                                    <br />
+                                                    <small><i class="text-muted fas fa-envelope"></i></small>
+                                                    {{emailTechnical}}
+                                                    <br />
+                                                    <small><i class="text-muted fas fa-map"></i></small>
+                                                    {{addressTechnical}}
+                                                    <br />
+                                                    <small><i class="text-muted fas fa-circle"></i></small> Técnico
+                                                    {{statusTechnicalText}}
+                                                </td>
+                                                <td>
+                                                    <small><i class="text-muted fas fa-laptop"></i></small>
+                                                    {{statusText}}
+                                                    <br />
+                                                    <small><i class="text-muted fas fa-user"></i></small> Ingresado
+                                                    por: {{namesRegisteredUser}}
+                                                    {{lastnamesRegisteredUser}}
+                                                </td>
+                                                <td class="project-actions text-center">
+                                                    <a class="btn btn-primary btn-sm" href="/repairs/view/{{id}}">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                    {{#if categoryUserLogin }}
+                                                    <a class="btn btn-danger btn-sm" href="/repairs/delete/{{id}}">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                    {{/if}}
+                                                </td>
+                                            </tr>
+                                            {{/each}}
+                                        </tbody>
+                                        <tfoot>
+                                            <th>Perfil Técnico</th>
+                                            <th>Nombres Técnico</th>
+                                            <th>Apellidos Técnico</th>
+                                            <th>Información del Técnico</th>
+                                            <th>Información de Reparación</th>
+                                            <th>.</th>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="costs">
+                                    <form id="quickForm" action="/repairs/view/{{repair.id}}/addcost" method="POST">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label>Motivo</label>
+                                                    <input type="text" name="reasonCost" class="form-control"
+                                                        placeholder="Ingrese el motivo">
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label>Observación</label>
+                                                    <input type="text" name="observationCost" class="form-control"
+                                                        placeholder="Ingrese la observación">
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label>Valor</label>
+                                                    <div class="input-group">
+                                                        <input type="number" step="0.01" name="valueCost"
+                                                            class="form-control" autofocus placeholder="0.00">
+                                                        <div class="input-group-prepend">
+                                                            <button class="btn btn-primary"><i
+                                                                    class="nav-icon fas fa-plus"></i>
+                                                                Añadir</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br><br>
+                                        <div class="row">
+                                            <div class="col-12 table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Fecha de ingreso</th>
+                                                            <th>Motivo</th>
+                                                            <th>Observación</th>
+                                                            <th>Ingresado por:</th>
+                                                            <th class="text-right">Valor</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {{#each costsRepairDB}}
+                                                        <tr>
+                                                            <td>{{joinedCostRepair}}</td>
+                                                            <td>{{reasonCostRepair}}</td>
+                                                            <td>{{observationCostRepair}}</td>
+                                                            <td>{{namesRegisteredUserCostRepair}}
+                                                                {{lastnamesRegisteredUserCostRepair}}</td>
+                                                            <td class="text-right">$ {{valueCostRepair}}</td>
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

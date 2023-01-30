@@ -1,0 +1,235 @@
+<section class="content">
+    <form id="quickForm" action="/repairs/add" method="POST">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Información del equipo</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Marca del dispositivo</label>
+                                                <input type="text" name="brand" class="form-control" autofocus
+                                                    placeholder="Ingrese la marca del dispositivo">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Modelo del dispositivo</label>
+                                                <input type="text" name="model" class="form-control"
+                                                    placeholder="Ingrese el modelo del dispositivo">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Serie del dispositivo (opcional)</label>
+                                                <input type="text" name="serie" class="form-control"
+                                                    placeholder="Ingrese la serie del dispositivo">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Color primario</label>
+                                                <input type="text" name="colorPrimary" class="form-control"
+                                                    placeholder="Ingrese el color primario">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Color secundario (opcional)</label>
+                                                <input type="text" name="colorSecondary" class="form-control"
+                                                    placeholder="Ingrese el color secundario">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Estado del dispositivo</label>
+                                                <input type="text" name="statusDevice" class="form-control"
+                                                    placeholder="Ingrese el estado del dispositivo">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Motivo de ingreso (falla)</label>
+                                                <input type="text" name="reason" class="form-control"
+                                                    placeholder="Ingrese el motivo de ingreso del dispositivo (visto desde el cliente)">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Observación (opcional)</label>
+                                                <input type="text" name="observation" class="form-control"
+                                                    placeholder="Ejemplo (Vino con cable de poder)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Información del cliente</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Identificación del cliente</label>
+                                                <div class="input-group">
+                                                    <input type="text" id="searchCustomer" name="identification"
+                                                        class="form-control" placeholder="Ingrese la identificación">
+                                                    <div class="input-group-prepend">
+                                                        <button type="button" id="searchCustomerBtn"
+                                                            class="btn btn-primary"><i
+                                                                class="nav-icon fas fa-search"></i>
+                                                            Buscar</button>
+                                                        <button type="button" id="clearCustomerBtn"
+                                                            class="btn btn-default"><i
+                                                                class="nav-icon fas fa-brush "></i> Limpiar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Nombres del cliente</label>
+                                                <input type="text" id="namesCustomer" name="names" class="form-control"
+                                                    placeholder="Ingrese los nombres del cliente">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Apellidos del cliente (opcional)</label>
+                                                <input type="text" id="lastNamesCustomer" name="lastnamesCustomer"
+                                                    class="form-control"
+                                                    placeholder="Ingrese los apellidos del cliente">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Dirección</label>
+                                                <input type="text" id="addressCustomer" name="address"
+                                                    class="form-control"
+                                                    placeholder="Ciudad, barrio o parroquia, calle, avenida">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Correo electrónico (opcional)</label>
+                                                <input type="email" id="emailCustomer" name="emailCustomer"
+                                                    class="form-control" placeholder="Ingrese el correo electrónico">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Contacto</label>
+                                                <input type="text" id="contactCustomer" name="contact"
+                                                    class="form-control" placeholder="Ingrese el contacto">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Información adicional</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Costo estimado (opcional)</label>
+                                                <input type="number" step="0.01" name="costRepair" class="form-control"
+                                                    placeholder="0.00">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Adelanto del cliente (opcional)</label>
+                                                <input type="number" step="0.01" name="paymentRepair"
+                                                    class="form-control" placeholder="0.00">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Método de pago (sólo si se hace adelanto)</label>
+                                                <select name="idMethodPayment" class="form-control">
+                                                    {{#each methodsPaymentsDB}}
+                                                    <option value="{{id}}">{{name}}</option>
+                                                    {{/each}}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Técnico</label>
+                                                <select name="idTechnical" class="form-control">
+                                                    {{#each technicalDB}}
+                                                    <option value="{{id}}">{{names}} {{lastnames}}</option>
+                                                    {{/each}}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary">
+                                <i class="nav-icon fas fa-save"></i>
+                                Guardar Reparación
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+<script src="/socket.io/socket.io.js" charset="utf-8"></script>
+<script src="/js/searchCustomer.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

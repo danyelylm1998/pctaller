@@ -1,0 +1,82 @@
+<section class="content">
+  <div class="card">
+    <div class="card-body">
+      <table id="example1" class="table table-bordered table-striped projects">
+        <thead>
+          <tr>
+            <th>Perfil Técnico</th>
+            <th>Nombres Técnico</th>
+            <th>Apellidos Técnico</th>
+            <th>Información del Técnico</th>
+            <th>Información del Cliente</th>
+            <th>Información de Reparación</th>
+            <th>.</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each repairsUsers}}
+          <tr>
+            <td width="150" height="150">
+              <ul class="list-inline text-center">
+                <li class="list-inline-item">
+                  <img src="/uploads/profile/users/{{imageTechnical}}" alt="" class="img-circle img-fluid">
+                </li>
+              </ul>
+            </td>
+            <td>{{namesTechnical}}</td>
+            <td>{{lastnamesTechnical}}</td>
+            <td>
+              <small><i class="text-muted fas fa-columns"></i></small> {{identificationTechnical}}
+              <br />
+              <small><i class="text-muted fas fa-phone"></i></small> {{contactTechnical}}
+              <br />
+              <small><i class="text-muted fas fa-envelope"></i></small> {{emailTechnical}}
+              <br />
+              <small><i class="text-muted fas fa-map"></i></small> {{addressTechnical}}
+              <br />
+              <small><i class="text-muted fas fa-circle"></i></small> Técnico {{statusTechnicalText}}
+            </td>
+            <td>
+              <small><i class="text-muted fas fa-columns"></i></small> {{identificationCustomer}}
+              <br />
+              <small><i class="text-muted fas fa-user"></i></small> {{namesCustomer}} {{lastnamesCustomer}}
+              <br />
+              <small><i class="text-muted fas fa-phone"></i></small> {{contactCustomer}}
+              <br />
+              <small><i class="text-muted fas fa-envelope"></i></small> {{emailCustomer}}
+              <br />
+              <small><i class="text-muted fas fa-map"></i></small> {{addressCustomer}}
+            </td>
+            <td>
+              <small><i class="text-muted fas fa-laptop"></i></small> {{statusText}}
+              <br />
+              <small><i class="text-muted fas fa-user"></i></small> Ingresado por: {{namesRegisteredUser}}
+              {{lastnamesRegisteredUser}}
+            </td>
+            <td class="project-actions text-center">
+
+              <a class="btn btn-primary btn-sm" href="/repairs/view/{{id}}">
+                <i class="fas fa-eye"></i>
+              </a>
+              {{#if categoryUserLogin }}
+              <a class="btn btn-danger btn-sm" href="/repairs/delete/{{id}}">
+                <i class="fas fa-trash"></i>
+              </a>
+              {{/if}}
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+        <tfoot>
+          <th>Perfil Técnico</th>
+          <th>Nombres Técnico</th>
+          <th>Apellidos Técnico</th>
+          <th>Información del Técnico</th>
+          <th>Información del Cliente</th>
+          <th>Información de Reparación</th>
+          <th>.</th>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</section>

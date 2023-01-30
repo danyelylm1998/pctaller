@@ -1,0 +1,370 @@
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="sticky-top mb-3">
+                    <div class="card card-primary card-outline">
+                        {{#with repair}}
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <img class="profile-user-img img-fluid img-circle"
+                                    src="/uploads/profile/users/{{imageTechnical}}">
+                            </div>
+                            <h3 class="profile-username text-center">{{namesTechnical}} {{lastnamesTechnical}}</h3>
+                            <p class="text-muted text-center">Técnico encargado</p>
+                            <div class="text-muted">
+                                <hr>
+                                <strong><i class="far fa-user mr-1"></i> Ingresado por:</strong>
+                                <p class="text-muted">{{namesRegisteredUser}} {{lastnamesRegisteredUser}}</p>
+                                <hr>
+                                <strong><i class="far fa-clock mr-1"></i> Fecha de ingreso:</strong>
+                                <p class="text-muted">{{joined}}</p>
+                                {{#ifCond status '==' 5 }}
+                                <hr>
+                                <strong><i class="far fa-clock mr-1"></i> Fecha de entrega:</strong>
+                                <p class="text-muted">{{delivered}}</p>
+                                {{/ifCond}}
+                                <hr>
+                                <strong><i class="far fa-circle mr-1"></i> Estado:</strong>
+                                {{#ifCond status '==' 1 }}
+                                PENDIENTE
+                                {{/ifCond}}
+                                {{#ifCond status '==' 2 }}
+                                EN REPARACIÓN
+                                {{/ifCond}}
+                                {{#ifCond status '==' 3 }}
+                                CULMINADA
+                                {{/ifCond}}
+                                {{#ifCond status '==' 4 }}
+                                EN TALLER
+                                {{/ifCond}}
+                                {{#ifCond status '==' 5 }}
+                                ENTREGADA A CLIENTE
+                                {{/ifCond}}
+                            </div>
+                            {{/with}}
+                            {{#if buttonChange }}
+                            {{#with repair}}
+                            <form id="quickForm" action="/repairs/view/{{id}}/updatestatus" method="POST">
+                                {{#ifCond status '==' 1 }}
+                                <br>
+                                <button class="btn btn-warning btn-block"><b>Pasar a estado: EN REPARACIÓN</b></button>
+                                {{/ifCond}}
+                                {{#ifCond status '==' 2 }}
+                                <br>
+                                <button class="btn btn-success btn-block"><b>Pasar a estado: CULMINADA</b></button>
+                                {{/ifCond}}
+                                {{#ifCond status '==' 3 }}
+                                <br>
+                                <button class="btn btn-info btn-block"><b>Pasar a estado: EN TALLER</b></button>
+                                {{/ifCond}}
+                                {{/with}}
+                                {{#ifCond repair.status '==' 4}}
+                                {{#if receiveView }}
+                                {{else}}
+                                <br>
+                                <button class="btn btn-secondary btn-block"><b>ENTREGAR A CLIENTE</b></button>
+                                {{/if}}
+                                {{/ifCond}}
+                            </form>
+                            {{#if receiveView }}
+                            <form id="quickForm" action="/repairs/consult/{{repair.code}}/cancel" method="POST">
+                                <br>
+                                <button class="btn btn-danger btn-block"><b>
+                                        CANCELAR ENTREGA
+                                    </b></button>
+                            </form>
+                            {{/if}}
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Acciones</h3>
+                        </div>
+                        <div class="text-muted card-body">
+                            <a class="text-muted" href="/repairs/pdf/{{repair.id}}">
+                                <i class="fas fa-download mr-1"></i>
+                                <strong>Descargar nota</strong>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header p-2">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item"><a class="nav-link active" href="#general"
+                                    data-toggle="tab">General</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="#costs" data-toggle="tab">Costos</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="#payments" data-toggle="tab">Pagos</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="general">
+                                {{#with repair}}
+                                <strong><i class="fas fa-user mr-1"></i> Información del
+                                    cliente</strong>
+                                <div class="row text-muted">
+                                    <div class="col-lg col-6">
+                                        <strong>
+                                            Identificación:
+                                        </strong>{{identificationCustomer}}
+                                    </div>
+                                    <div class="col-lg col-6">
+                                        <strong>
+                                            Razón social:
+                                        </strong>{{namesCustomer}}
+                                        {{#ifCond lastnamesCustomer '!=' '' }}
+                                        {{lastnamesCustomer}}
+                                        {{/ifCond}}
+                                    </div>
+                                    <div class="col-lg col-6">
+                                    </div>
+                                </div>
+                                <div class="row text-muted">
+                                    <div class="col-lg col-6">
+                                        <strong>
+                                            Dirección:
+                                        </strong>{{addressCustomer}}
+                                    </div>
+                                    <div class="col-lg col-6">
+                                        <strong>
+                                            Contacto:
+                                        </strong>{{contactCustomer}}
+                                    </div>
+                                    <div class="col-lg col-6">
+                                        {{#ifCond emailCustomer '!=' '' }}
+                                        <strong>
+                                            Correo electrónico:
+                                        </strong>{{emailCustomer}}
+                                        {{/ifCond}}
+                                    </div>
+                                </div>
+                                {{/with}}
+                                <hr>
+                                {{#with equipment}}
+                                <strong><i class="fas fa-laptop mr-1"></i> Información del
+                                    equipo</strong>
+                                <div class="row text-muted">
+                                    <div class="col-lg col-6">
+                                        <strong>
+                                            Marca:
+                                        </strong>{{brand}}
+                                    </div>
+                                    <div class="col-lg col-6">
+                                        <strong>
+                                            Modelo:
+                                        </strong>{{model}}
+                                    </div>
+                                    <div class="col-lg col-6">
+                                        {{#ifCond serie '!=' '' }}
+                                        <strong>
+                                            Serie:
+                                        </strong>{{serie}}
+                                        {{/ifCond}}
+                                    </div>
+                                </div>
+                                <div class="row text-muted">
+                                    <div class="col-lg col-6">
+                                        <strong>
+                                            Estado:
+                                        </strong>{{statusDevice}}
+                                    </div>
+                                    <div class="col-lg col-6">
+                                        <strong>
+                                            Color Primario:
+                                        </strong>{{colorPrimary}}
+                                    </div>
+                                    <div class="col-lg col-6">
+                                        {{#ifCond colorSecondary '!=' '' }}
+                                        <strong>
+                                            Color Secundario:
+                                        </strong>{{colorSecondary}}
+                                        {{/ifCond}}
+                                    </div>
+                                </div>
+                                {{/with}}
+                                <hr>
+                                <div class="row">
+                                    {{#with repair}}
+                                    <div class="col-lg col-6">
+                                        <strong><i class="fas fa-edit mr-1"></i> Motivo de ingreso</strong>
+                                        <p class="text-muted">{{reason}}</p>
+                                    </div>
+                                    <div class="col-lg col-6">
+                                        <strong><i class="fas fa-eye mr-1"></i> Observación</strong>
+                                        <p class="text-muted">{{observation}}</p>
+                                    </div>
+                                    <div class="col-lg col-6">
+                                    </div>
+                                    {{/with}}
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="costs">
+                                <form id="quickForm" action="/repairs/view/{{repair.id}}/addcost" method="POST">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label>Motivo</label>
+                                                <input type="text" name="reasonCost" class="form-control"
+                                                    placeholder="Ingrese el motivo">
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label>Observación</label>
+                                                <input type="text" name="observationCost" class="form-control"
+                                                    placeholder="Ingrese la observación">
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label>Valor</label>
+                                                <div class="input-group">
+                                                    <input type="number" step="0.01" name="valueCost"
+                                                        class="form-control" autofocus placeholder="0.00">
+                                                    <div class="input-group-prepend">
+                                                        <button class="btn btn-primary"><i
+                                                                class="nav-icon fas fa-plus"></i>
+                                                            Añadir</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                    <div class="row">
+                                        <div class="col-12 table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Fecha de ingreso</th>
+                                                        <th>Motivo</th>
+                                                        <th>Observación</th>
+                                                        <th>Ingresado por:</th>
+                                                        <th class="text-right">Valor</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {{#each costsRepairDB}}
+                                                    <tr>
+                                                        <td>{{joinedCostRepair}}</td>
+                                                        <td>{{reasonCostRepair}}</td>
+                                                        <td>{{observationCostRepair}}</td>
+                                                        <td>{{namesRegisteredUserCostRepair}}
+                                                            {{lastnamesRegisteredUserCostRepair}}</td>
+                                                        <td class="text-right">$ {{valueCostRepair}}</td>
+                                                    </tr>
+                                                    {{/each}}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="payments">
+                                <form id="quickForm" action="/repairs/view/{{repair.id}}/addpayment" method="POST">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label>Método de pago</label>
+                                                <select name="idMethodPayment" class="form-control">
+                                                    {{#each methodsPaymentsDB}}
+                                                    <option value="{{id}}">{{name}}</option>
+                                                    {{/each}}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label>Observación</label>
+                                                <input type="text" name="observationPayment" class="form-control"
+                                                    placeholder="Ingrese la observación">
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label>Valor</label>
+                                                <div class="input-group">
+                                                    <input type="number" step="0.01" name="valuePayment"
+                                                        class="form-control" autofocus placeholder="0.00">
+                                                    <div class="input-group-prepend">
+                                                        <button class="btn btn-primary"><i
+                                                                class="nav-icon fas fa-plus"></i>
+                                                            Añadir</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                    <div class="row">
+                                        <div class="col-12 table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Fecha de cobro</th>
+                                                        <th>Método de pago</th>
+                                                        <th>Observación</th>
+                                                        <th>Cobrado por:</th>
+                                                        <th class="text-right">Valor</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {{#each paymentsRepairDB}}
+                                                    <tr>
+                                                        <td>{{joinedPaymentRepair}}</td>
+                                                        <td>{{methodPayment}}</td>
+                                                        <td>{{observationPaymentRepair}}</td>
+                                                        <td>{{namesRegisteredUserPaymentRepair}}
+                                                            {{lastnamesRegisteredUserPaymentRepair}}</td>
+                                                        <td class="text-right">$ {{valuePaymentRepair}}</td>
+                                                    </tr>
+                                                    {{/each}}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card container-fluid">
+                    <br>
+                    <div style="align-items:center" class="row">
+                        <div class="col-6">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    {{#with balanceRepair}}
+                                    <tr>
+                                        <th style="width:50%">Costo:</th>
+                                        <td class="text-right">$ {{cost}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Pagado:</th>
+                                        <td class="text-right">$ {{paid}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Pendiente</th>
+                                        <td class="text-right">$ {{pending}}</td>
+                                    </tr>
+                                    {{/with}}
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-6 text-center">
+                            <p><img src="/repairs/{{repair.code}}.jpg"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
